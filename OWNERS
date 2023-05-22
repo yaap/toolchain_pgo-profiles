@@ -1,10 +1,8 @@
 # Default maintainers and code reviewers for PGO
-srhines@google.com
+appujee@google.com
 pirama@google.com
+srhines@google.com
+yabinc@google.com
 yikong@google.com
-chh@google.com
-zhizhouy@google.com
-gbiv@google.com
-llozano@google.com
 # mailing list cannot be a reviewer yet
 # android-llvm-dev+owners-review@google.com
