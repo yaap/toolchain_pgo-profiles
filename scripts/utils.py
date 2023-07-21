@@ -49,6 +49,12 @@ def check_output(cmd, *args, **kwargs):
         cmd, *args, **kwargs, check=True, text=True,
         stdout=subprocess.PIPE).stdout
 
+def check_error(cmd, *args, **kwargs):
+    """subprocess.check_error with logging."""
+    logger().info('check_error: %s', subprocess.list2cmdline(cmd))
+    return subprocess.run(
+        cmd, *args, **kwargs, check=True, text=True,
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT).stdout
 
 def android_build_top():
     return os.path.realpath(os.path.join(THIS_DIR, '../../..'))
