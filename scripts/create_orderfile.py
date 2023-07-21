@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright (C) 2019 The Android Open Source Project
+# Copyright (C) 2023 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,6 +22,8 @@
 import argparse
 import os
 import shutil
+
+import orderfile_utils
 
 def parse_args():
     """Parses and returns command line arguments."""
@@ -57,30 +59,13 @@ def parse_args():
 
     return parser.parse_args()
 
-# Create denylist set based on a file or comma-separate symbols
-def parse_set(param):
-    symbol_set = set()
-    if len(param) == 0:
-        return symbol_set
-
-    if param[0] == "@":
-        with open(param[1:], "r") as f:
-            for line in f:
-                line = line.strip()
-                symbol_set.add(line)
-        return symbol_set
-
-    list_symbols = param.split()
-    symbol_set.update(list_symbols)
-    return symbol_set
-
 def main():
     args = parse_args()
 
     symbols = []
     mapping = {}
     seen = set()
-    denylist = parse_set(args.denylist)
+    denylist = orderfile_utils.parse_set(args.denylist)
 
     # Load the MD5 hash mappings of the symbols.
     with open(args.mapping_file, "r") as f:
