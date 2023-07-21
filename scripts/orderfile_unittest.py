@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright (C) 2019 The Android Open Source Project
+# Copyright (C) 2023 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@
 #
 # Sample Usage:
 # $ python3 -m unittest orderfile_unittest.py
+#
+# For more verbose test information:
+# $ python3 -m unittest -v orderfile_unittest.py
 
 import os
 import unittest
@@ -28,9 +31,14 @@ class TestCreateOrderfile(unittest.TestCase):
     top = utils.android_build_top()
     THIS_DIR = os.path.realpath(os.path.dirname(__file__))
     create_script = top+"/toolchain/pgo-profiles/scripts/create_orderfile.py"
+    validate_script = top+"/toolchain/pgo-profiles/scripts/validate_orderfile.py"
     profile_file = top+"/toolchain/pgo-profiles/orderfiles/test/example.prof"
     mapping_file = top+"/toolchain/pgo-profiles/orderfiles/test/example-mapping.txt"
+    order_file = top+"/toolchain/pgo-profiles/orderfiles/test/example.orderfile"
     denylist_file = top+"/toolchain/pgo-profiles/orderfiles/test/denylist.txt"
+    partial_file = top+"/toolchain/pgo-profiles/orderfiles/test/partial.txt"
+    partialb_file = top+"/toolchain/pgo-profiles/orderfiles/test/partial_bad.txt"
+    allowlistv_file = top+"/toolchain/pgo-profiles/orderfiles/test/allowlistv.txt"
     output_file = THIS_DIR+"/default.orderfile"
     temp_file = THIS_DIR+"/temp.orderfile"
 
@@ -47,8 +55,13 @@ class TestCreateOrderfile(unittest.TestCase):
     # Test if no mapping/profile file isn't passed then the script errors
     def test_create_orderfile_missing_mapping_argument(self):
         with self.assertRaises(subprocess.CalledProcessError) as context:
-           utils.check_call(["python3", self.create_script,
-                            "--profile-file", self.profile_file])
+            utils.check_error(["python3", self.create_script,
+                                "--profile-file", self.profile_file])
+
+        # Check error output that flag is required
+        last_line = context.exception.output.split("\n")[-2]
+        self.assertEqual(last_line,
+                        "create_orderfile: error: the following arguments are required: --mapping-file")
 
     # Test if the script creates an orderfile named temp.orderfile not default.orderfile
     def test_create_orderfile_output_name(self):
@@ -72,7 +85,6 @@ class TestCreateOrderfile(unittest.TestCase):
                             "--mapping-file", self.mapping_file,
                             "--leftover",
                             "--output", "temp.orderfile"])
-
         self.assertTrue(os.path.isfile(self.temp_file))
         self.assertTrue(os.path.isfile(self.output_file))
 
@@ -98,13 +110,13 @@ class TestCreateOrderfile(unittest.TestCase):
         os.remove(self.THIS_DIR+"/temp.orderfile")
         os.remove(self.output_file)
 
-    # Test if the script creates an orderfile without main based on CSV format
+    # Test if the script creates an orderfile without part based on both formats
     def test_create_orderfile_denylist(self):
+        # Test with CSV format
         utils.check_call(["python3", self.create_script,
                             "--profile-file", self.profile_file,
                             "--mapping-file", self.mapping_file,
                             "--denylist", "\"_Z4partPiii\""])
-
         self.assertTrue(os.path.isfile(self.output_file))
 
         with open(self.output_file, "r") as f:
@@ -115,8 +127,7 @@ class TestCreateOrderfile(unittest.TestCase):
         # Clean up at the end
         os.remove(self.output_file)
 
-    # Test if the script creates an orderfile without main based on file format
-    def test_create_orderfile_denylist(self):
+        # Test with file format
         utils.check_call(["python3", self.create_script,
                             "--profile-file", self.profile_file,
                             "--mapping-file", self.mapping_file,
@@ -131,6 +142,205 @@ class TestCreateOrderfile(unittest.TestCase):
 
         # Clean up at the end
         os.remove(self.output_file)
+
+    # Test the validate script works correctly
+    def test_validate_orderfile_normal(self):
+        output = utils.check_output(["python3", self.validate_script,
+                                        "--order-file", self.order_file])
+        self.assertTrue(output, "Order file is valid")
+
+    # Test errors in vaidate script like bad type mismatch or no orderfile passed
+    def test_validate_orderfile_argument_errors(self):
+        with self.assertRaises(subprocess.CalledProcessError) as context:
+            utils.check_error(["python3", self.validate_script])
+
+        # Check error output that flag is required
+        last_line = context.exception.output.split("\n")[-2]
+        self.assertEqual(last_line,
+                        "validate_orderfile: error: the following arguments are required: --order-file")
+
+    # Test if the validate script checks partial order based on both formats
+    def test_validate_orderfile_partial_flag(self):
+        # Test a correct partial order in CSV format
+        output = utils.check_output(["python3", self.validate_script,
+                                        "--order-file", self.order_file,
+                                        "--partial", "_Z9mergeSortPiii,_Z5mergePiiii"])
+
+        self.assertTrue(output, "Order file is valid")
+
+        # Test a correct partial order in file format
+        output = utils.check_output(["python3", self.validate_script,
+                                        "--order-file", self.order_file,
+                                        "--partial", "@"+self.partial_file])
+        self.assertTrue(output, "Order file is valid")
+
+        # Test a partial order with only one symbol (We allow this case)
+        output = utils.check_output(["python3", self.validate_script,
+                                        "--order-file", self.order_file,
+                                        "--partial", "_Z9mergeSortPiii"])
+        self.assertTrue(output, "Order file is valid")
+
+        # Test a partial order with one symbol not in orderfile
+        output = utils.check_output(["python3", self.validate_script,
+                                        "--order-file", self.order_file,
+                                        "--partial", "_Z9mergeSortPiii,temp"])
+        self.assertTrue(output, "Order file is valid")
+
+        # Test a bad partial order in CSV format
+        with self.assertRaises(subprocess.CalledProcessError) as context:
+            utils.check_error(["python3", self.validate_script,
+                                "--order-file", self.order_file,
+                                "--partial", "_Z5mergePiiii,_Z9mergeSortPiii"])
+
+        # Check the last non-empty to see if gives a RuntimeError
+        # and has a message saying _Z5mergePiiii must be before _Z9mergeSortPiii in orderfile
+        last_line = context.exception.output.split("\n")[-2]
+        self.assertEqual(last_line,
+                        "RuntimeError: _Z5mergePiiii must be before _Z9mergeSortPiii in orderfile")
+
+        # Test a bad partial order in file format
+        with self.assertRaises(subprocess.CalledProcessError) as context:
+            utils.check_error(["python3", self.validate_script,
+                                "--order-file", self.order_file,
+                                "--partial", "@"+self.partialb_file])
+
+        # Check the last non-empty to see if gives a RuntimeError
+        # and has a message saying _Z5mergePiiii must be before _Z9mergeSortPiii in orderfile
+        last_line = context.exception.output.split("\n")[-2]
+        self.assertEqual(last_line,
+                        "RuntimeError: _Z5mergePiiii must be before _Z9mergeSortPiii in orderfile")
+
+    # Test if the validate script checks if symbols are present in orderfile based on both format
+    def test_validate_orderfile_allowlist_flag(self):
+        # Test a correct allowlist in CSV format
+        output = utils.check_output(["python3", self.validate_script,
+                                        "--order-file", self.order_file,
+                                        "--allowlist", "main"])
+        self.assertTrue(output, "Order file is valid")
+
+        # Test a correct allowlist in file format
+        output = utils.check_output(["python3", self.validate_script,
+                                        "--order-file", self.order_file,
+                                        "--allowlist", "@"+self.allowlistv_file])
+        self.assertTrue(output, "Order file is valid")
+
+        # Test a bad allowlist in CSV format
+        with self.assertRaises(subprocess.CalledProcessError) as context:
+            utils.check_error(["python3", self.validate_script,
+                                "--order-file", self.order_file,
+                                "--allowlist", "_Z4partPiii"])
+
+        # Check the last non-empty to see if gives a RuntimeError
+        # and has a message saying symbols in allow-list are not in orderfile
+        last_line = context.exception.output.split("\n")[-2]
+        self.assertEqual(last_line,
+                        "RuntimeError: Some symbols in allow-list are not in the orderfile")
+
+        # Test a bad allowlist in file format
+        with self.assertRaises(subprocess.CalledProcessError) as context:
+            utils.check_error(["python3", self.validate_script,
+                                "--order-file", self.order_file,
+                                "--allowlist", "@"+self.denylist_file])
+
+        # Check the last non-empty to see if gives a RuntimeError
+        # and has a message saying symbols in allow-list are not in orderfile
+        last_line = context.exception.output.split("\n")[-2]
+        self.assertEqual(last_line,
+                        "RuntimeError: Some symbols in allow-list are not in the orderfile")
+
+    # Test if the validate script checks if symbols are not present in orderfile based on both format
+    def test_validate_orderfile_denylist_flag(self):
+        # Test a correct denylist in CSV format
+        output = utils.check_output(["python3", self.validate_script,
+                                        "--order-file", self.order_file,
+                                        "--denylist", "_Z4partPiii"])
+        self.assertTrue(output, "Order file is valid")
+
+        # Test a correct denylist in file format
+        output = utils.check_output(["python3", self.validate_script,
+                                        "--order-file", self.order_file,
+                                        "--denylist", "@"+self.denylist_file])
+        self.assertTrue(output, "Order file is valid")
+
+        # Test a bad denylist in CSV format
+        with self.assertRaises(subprocess.CalledProcessError) as context:
+            utils.check_error(["python3", self.validate_script,
+                                "--order-file", self.order_file,
+                                "--denylist", "main"])
+
+        # Check the last non-empty to see if gives a RuntimeError
+        # and has a message saying "main" should not be in orderfile
+        last_line = context.exception.output.split("\n")[-2]
+        self.assertEqual(last_line,
+                        "RuntimeError: Orderfile should not contain main")
+
+        # Test a bad denylist in file format
+        with self.assertRaises(subprocess.CalledProcessError) as context:
+            utils.check_error(["python3", self.validate_script,
+                                "--order-file", self.order_file,
+                                "--denylist", "@"+self.allowlistv_file])
+
+        # Check the last non-empty to see if gives a RuntimeError
+        # and has a message saying "main" should not be in orderfile
+        last_line = context.exception.output.split("\n")[-2]
+        self.assertEqual(last_line,
+                        "RuntimeError: Orderfile should not contain main")
+
+    # Test if the validate script checks if there are a minimum number of symbols
+    def test_validate_orderfile_min_flag(self):
+        # Test a correct minimum number of symbols
+        output = utils.check_output(["python3", self.validate_script,
+                                        "--order-file", self.order_file,
+                                        "--min", "3"])
+        self.assertTrue(output, "Order file is valid")
+
+        # Test a bad minimum number of symbols
+        with self.assertRaises(subprocess.CalledProcessError) as context:
+            utils.check_error(["python3", self.validate_script,
+                                "--order-file", self.order_file,
+                                "--min", "10"])
+
+        # Check the last non-empty to see if gives a RuntimeError
+        # and has a message saying it needs at least 10 symbols
+        last_line = context.exception.output.split("\n")[-2]
+        self.assertEqual(last_line,
+                        "RuntimeError: The orderfile has 5 symbols but it needs at least 10 symbols")
+
+        # Test a bad minimum number of symbols
+        with self.assertRaises(subprocess.CalledProcessError) as context:
+            utils.check_error(["python3", self.validate_script,
+                                "--order-file", self.order_file,
+                                "--min", "three"])
+
+        # Check error output that flag has invalid type
+        last_line = context.exception.output.split("\n")[-2]
+        self.assertEqual(last_line,
+                        "validate_orderfile: error: argument --min: invalid int value: 'three'")
+
+    # Test if the validate script gives priority to denylist flag over other flags
+    def test_validate_orderfile_denylist_priority(self):
+        # Test the denylist has more priority over allowlist and should not give error
+        # here because the symbol is not in the orderfile
+        output = utils.check_output(["python3", self.validate_script,
+                                        "--order-file", self.order_file,
+                                        "--allowlist", "_Z4partPiii",
+                                        "--denylist", "_Z4partPiii"])
+        self.assertTrue(output, "Order file is valid")
+
+        # Test the denylist has more priority over allowlist and should give error
+        # here because the symbol is in the orderfile
+        with self.assertRaises(subprocess.CalledProcessError) as context:
+            utils.check_error(["python3", self.validate_script,
+                                "--order-file", self.order_file,
+                                "--allowlist", "_Z5mergePiiii",
+                                "--denylist", "_Z5mergePiiii"])
+
+        # Check the last non-empty to see if gives a RuntimeError
+        # and has a message saying _Z5mergePiiii should not be in orderfile
+        last_line = context.exception.output.split("\n")[-2]
+        self.assertEqual(last_line,
+                        "RuntimeError: Orderfile should not contain _Z5mergePiiii")
+
 
 if __name__ == '__main__':
     unittest.main()
