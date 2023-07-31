@@ -28,7 +28,7 @@ Create Order file
 You can create an orderfile from a mapping file and profile file.
 
 ```
-python3 create_orderfile [-h] --profile-file PROFILE_FILE --mapping-file MAPPING_FILE [--output OUTPUT] [--denylist DENYLIST] [--leftover]
+python3 create_orderfile [-h] --profile-file PROFILE_FILE --mapping-file MAPPING_FILE [--output OUTPUT] [--denylist DENYLIST] [--last-symbol LAST_SYMBOL] [--leftover]
 ```
 
 Flags:
@@ -41,11 +41,16 @@ Flags:
     - Type: String
     - Required
 - Output file (--output):
-    - Description: The output file name for the orderfile. Default Name: default.orderfile
+    - Description: The output file name for the order file. Default Name: default.orderfile
     - Type: String
 - Deny List (--denylist):
     - Description: Symbols that you want to exclude from the order file
     - Type: String (File/CSV)
+- Last symbol (--last-symbol):
+    - Description: The order file will end at the passed last symbol and ignore the symbols after it.
+                   If you want an order file only for startup, you should pass the last startup symbol.
+                   Last-symbol has priority over leftover so we will output until the last symbol and ignore the leftover flag.
+    - Type: String
 - Leftover symbols (--leftover):
     - Description: Some symbols (functions) might not have executed so they will not appear in the profile file.
                    If you want these symbols in your orderfile, you can use this flag and it will add them at the end.

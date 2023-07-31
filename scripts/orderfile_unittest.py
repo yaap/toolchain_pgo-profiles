@@ -116,7 +116,7 @@ class TestCreateOrderfile(unittest.TestCase):
         utils.check_call(["python3", self.create_script,
                             "--profile-file", self.profile_file,
                             "--mapping-file", self.mapping_file,
-                            "--denylist", "\"_Z4partPiii\""])
+                            "--denylist", "_Z4partPiii"])
         self.assertTrue(os.path.isfile(self.output_file))
 
         with open(self.output_file, "r") as f:
@@ -341,6 +341,42 @@ class TestCreateOrderfile(unittest.TestCase):
         self.assertEqual(last_line,
                         "RuntimeError: Orderfile should not contain _Z5mergePiiii")
 
+    # Test if the script creates an orderfile until the last symbol
+    def test_create_orderfile_last_symbol(self):
+        # Test an example where main is the last symbol
+        utils.check_call(["python3", self.create_script,
+                            "--profile-file", self.profile_file,
+                            "--mapping-file", self.mapping_file,
+                            "--last-symbol", "main"])
+        self.assertTrue(os.path.isfile(self.output_file))
+
+        # Only main symbols should be in the file
+        output = utils.check_output(["python3", self.validate_script,
+                                    "--order-file", self.output_file,
+                                    "--allowlist", "_GLOBAL__sub_I_main.cpp,main",
+                                    "--denylist", "_Z5mergePiiii,_Z9mergeSortPiii,_Z4partPiii,_Z9quickSortPiii"])
+        self.assertTrue(output, "Order file is valid")
+
+        # Clean up at the end
+        os.remove(self.output_file)
+
+        # Test last-symbol has higher priority over leftover
+        utils.check_call(["python3", self.create_script,
+                            "--profile-file", self.profile_file,
+                            "--mapping-file", self.mapping_file,
+                            "--last-symbol", "main",
+                            "--leftover"])
+        self.assertTrue(os.path.isfile(self.output_file))
+
+        # Only main symbols should be in the file because leftover was ignored
+        output = utils.check_output(["python3", self.validate_script,
+                                    "--order-file", self.output_file,
+                                    "--allowlist", "_GLOBAL__sub_I_main.cpp,main",
+                                    "--denylist", "_Z5mergePiiii,_Z9mergeSortPiii,_Z4partPiii,_Z9quickSortPiii"])
+        self.assertTrue(output, "Order file is valid")
+
+        # Clean up at the end
+        os.remove(self.output_file)
 
 if __name__ == '__main__':
     unittest.main()

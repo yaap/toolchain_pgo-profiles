@@ -44,23 +44,23 @@ def parse_args():
     parser.add_argument(
         "--partial",
         default="",
-        help="A partial order of symbols that need to hold in the orderfile. \
-              Format: A symbol-per-line file with @ or comma separarted values within a quotation. \
-              For example, you can say @file.txt or 'main,bar,foo'.")
+        help=f"A partial order of symbols that need to hold in the orderfile."
+             f"Format: A symbol-per-line file with @ or comma separarted values within a quotation."
+             f"For example, you can say @file.txt or 'main,bar,foo'.")
 
     parser.add_argument(
         "--allowlist",
         default="",
-        help="Symbols that have to be present in the orderfile. \
-              Format: A symbol-per-line file with @ or comma separarted values within a quotation. \
-              For example, you can say @file.txt or 'main,bar,foo'.")
+        help=f"Symbols that have to be present in the orderfile."
+             f"Format: A symbol-per-line file with @ or comma separarted values within a quotation."
+             f"For example, you can say @file.txt or 'main,bar,foo'.")
 
     parser.add_argument(
         "--denylist",
         default="",
-        help="Symbols that should not be in orderfile. Denylist flag has priority over allowlist. \
-              Format: A symbol-per-line file with @ or comma separarted values within a quotation. \
-              For example, you can say @file.txt or 'main,bar,foo'.")
+        help=f"Symbols that should not be in orderfile. Denylist flag has priority over allowlist."
+             f"Format: A symbol-per-line file with @ or comma separarted values within a quotation."
+             f"For example, you can say @file.txt or 'main,bar,foo'.")
 
     parser.add_argument(
         "--min",
