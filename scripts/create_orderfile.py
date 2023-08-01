@@ -43,13 +43,19 @@ def parse_args():
     parser.add_argument(
         "--output",
         default="default.orderfile",
-        help="Provide the output file name for the orderfile. Default Name: default.orderfile")
+        help="Provide the output file name for the order file. Default Name: default.orderfile")
 
     parser.add_argument(
         "--denylist",
         default="",
-        help="Exclude symbols based on a symbol-per-line file with @ or comma separarted values within a quotation. \
-              For example, you can say @file.txt or 'main,bar,foo'")
+        help=f"Exclude symbols based on a symbol-per-line file with @ or comma separarted values within a quotation."
+             f"For example, you can say @file.txt or 'main,bar,foo'")
+
+    parser.add_argument(
+        "--last-symbol",
+        help=f"Create an order file until the passed last symbol and ignore the symbols after it."
+             f"Useful if you want an order file only for startup so you should pass the last startup symbol."
+             f"Last-symbol has priority over leftover so we will output until the last symbol and ignore the leftover flag.")
 
     parser.add_argument(
         "--leftover",
@@ -105,8 +111,9 @@ def main():
                         symbols.append(symbol_2)
 
     # Functions in the mapping but not seen in the partial order.
-    # If you want to add them, you can use the leftover flag
-    if args.leftover:
+    # If you want to add them, you can use the leftover flag.
+    # Note: You can only use the leftover flag if the last-symbol flag was not passed
+    if args.leftover and args.last_symbol != None:
         for md5 in mapping:
             if mapping[md5] not in seen:
                 symbols.append(mapping[md5])
@@ -116,6 +123,9 @@ def main():
         for symbol in symbols:
             f.write(symbol+"\n")
 
+            # If we are at the last-symbol, we do not write the rest of the symbols
+            if symbol == args.last_symbol:
+                break
 
 if __name__ == '__main__':
     main()
