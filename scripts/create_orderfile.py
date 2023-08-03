@@ -87,8 +87,8 @@ def main():
             # Every line should have 2 MD5 hashes in reverse order (little Endian)
             # so we need to reverse them to get the actual md5 hashes
             if len(line) >= 8:
-                md5_1_b_list = line[1:5]
-                md5_2_b_list = line[5:]
+                md5_1_b_list = line[1:9]
+                md5_2_b_list = line[9:17]
 
                 md5_1_b_list.reverse()
                 md5_2_b_list.reverse()
