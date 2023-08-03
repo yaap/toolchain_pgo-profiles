@@ -46,7 +46,11 @@ int main () {
 
 4. Convert the profraw file into hexadecimal format
 ```
-od -h <filename>.output.order > <filename>.prof
+# Convert to hexadecimal format on Linux, Mac, and ChromeOS
+hexdump -C <filename>.output.order > <filename>.prof
+
+# Convert to hexadecimal format on Windows
+certutil -f -encodeHex <filename>.output.order <filename>.prof
 ```
 
 5. Use [toolchain/pgo-profiles/scripts/create_orderfile.py](https://android.googlesource.com/toolchain/pgo-profiles/+/refs/heads/main/scripts/create_orderfile.py) to create an order file based on the profile and mapping files
@@ -124,7 +128,12 @@ int main(int argc, char** argv) {
 ```
 adb shell art/tools/run-gtests.sh -j1 /apex/com.android.art/bin/art/arm64/art_dex2oat_tests
 adb pull /data/local/art-test-chroot/dex2oat.output.order .
-od -h dex2oat.output.order > dex2oat.prof
+
+# Convert to hexadecimal format on Linux, Mac, and ChromeOS
+hexdump -C dex2oat.output.order > dex2oat.prof
+
+# Convert to hexadecimal format on Windows
+certutil -f -encodeHex dex2oat.output.order dex2oat.prof
 ```
 
 5. Create the order file from both the profile file and mapping file
