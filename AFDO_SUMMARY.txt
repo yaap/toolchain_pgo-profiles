@@ -42,26 +42,6 @@ art::Monitor::MonitorExit(art::Thread*, art::ObjPtr<art::mirror::Object>)
 art::ThreadList::SuspendThreadByThreadId(unsigned int, art::SuspendReason, bool*)
 
 
-sampling/libart_arm.afdo
-====
-art::ClassLinker::AddImageSpace(art::gc::space::ImageSpace*, art::Handle<art::mirror::ClassLoader>, art::ClassLoaderContext*, std::__1::vector<std::__1::unique_ptr<art::DexFile const, std::__1::default_delete<art::DexFile const>>, std::__1::allocator<std::__1::unique_ptr<art::DexFile const, std::__1::default_delete<art::DexFile const>>>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>*)
-void art::JNI<true>::GetPrimitiveArrayRegion<_jbyteArray*, signed char, art::mirror::PrimitiveArray<signed char>>(_JNIEnv*, _jbyteArray*, int, int, signed char*)
-art::ClassLinker::FindClass(art::Thread*, char const*, art::Handle<art::mirror::ClassLoader>)
-art::gc::accounting::SpaceBitmap<4096u>::SpaceBitmap(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, art::MemMap&&, unsigned int*, unsigned int, void const*, unsigned int)
-art::gc::accounting::SpaceBitmap<4096u>::SpaceBitmap(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, art::MemMap&&, unsigned int*, unsigned int, void const*, unsigned int)
-art::verifier::impl::(anonymous namespace)::MethodVerifier<false>::CodeFlowVerifyInstruction(unsigned int*) (.__uniq.63246233319839034720636906213703941800)
-unsigned long long art::artInvokeCommon<(art::InvokeType)1>(unsigned int, art::ObjPtr<art::mirror::Object>, art::Thread*, art::ArtMethod**) (.__uniq.251194518403264110893497199827840710993)
-art::ConditionVariable::WaitHoldingLocks(art::Thread*)
-art::Runtime::InitNativeMethods()
-art::CodeInfo::DecodeInlineInfoOnly(art::OatQuickMethodHeader const*)
-art::ClassLinker::InitializeClass(art::Thread*, art::Handle<art::mirror::Class>, bool, bool)
-art::ClassLinker::LinkMethodsHelper<(art::PointerSize)8>::LinkMethods(art::Thread*, art::Handle<art::mirror::Class>, art::Handle<art::mirror::ObjectArray<art::mirror::Class>>, bool*, art::ArtMethod**)
-art::ThreadList::SuspendThreadByThreadId(unsigned int, art::SuspendReason, bool*)
-art::JNI<false>::SetObjectArrayElement(_JNIEnv*, _jobjectArray*, int, _jobject*)
-art::jit::JitCodeCache::GarbageCollectCache(art::Thread*)
-art::ClassLinker::LinkMethodsHelper<(art::PointerSize)4>::LinkMethods(art::Thread*, art::Handle<art::mirror::Class>, art::Handle<art::mirror::ObjectArray<art::mirror::Class>>, bool*, art::ArtMethod**)
-
-
 sampling/libartbase_arm64.afdo
 ====
 art::NanoTime()
@@ -80,26 +60,6 @@ art::ScopedArenaAllocator::~ScopedArenaAllocator()
 art::InitLogging(char**, void (&)(char const*))::LogdLoggerLocked::operator()(android::base::LogId, android::base::LogSeverity, char const*, char const*, unsigned int, char const*) (.__uniq.85101241731209538599761260233789784808)
 std::__1::vector<unsigned char, std::__1::allocator<unsigned char>>::__append(unsigned long)
 art::BitVector::GetHighestBitSet() const
-
-
-sampling/libartbase_arm.afdo
-====
-art::MemMap::DumpMapsLocked(std::__1::basic_ostream<char, std::__1::char_traits<char>>&, bool)
-unix_file::FdFile::FlushCloseOrErase()
-art::Flag<int>::Reload()
-art::OpenAndReadMagic(char const*, unsigned int*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>*)
-art::metrics::MetricsAverage<(art::metrics::DatumId)8, unsigned long long>::Report(std::__1::vector<art::metrics::MetricsBackend*, std::__1::allocator<art::metrics::MetricsBackend*>> const&) const
-unix_file::FdFile::FdFile(unix_file::FdFile&&)
-unix_file::FdFile::FdFile(unix_file::FdFile&&)
-art::metrics::MetricsHistogram<(art::metrics::DatumId)16, 15u, 0ll, 10000ll>::IsNull() const
-art::metrics::MetricsHistogram<(art::metrics::DatumId)19, 15u, 0ll, 10000ll>::IsNull() const
-art::metrics::MetricsHistogram<(art::metrics::DatumId)18, 15u, 0ll, 10000ll>::IsNull() const
-art::metrics::MetricsHistogram<(art::metrics::DatumId)15, 15u, 0ll, 60000ll>::IsNull() const
-art::metrics::MetricsHistogram<(art::metrics::DatumId)14, 15u, 0ll, 60000ll>::IsNull() const
-art::metrics::MetricsHistogram<(art::metrics::DatumId)17, 15u, 0ll, 10000ll>::IsNull() const
-art::MemMap::swap(art::MemMap&)
-art::metrics::ArtMetrics::ReportAllMetricsAndResetValueMetrics(std::__1::vector<art::metrics::MetricsBackend*, std::__1::allocator<art::metrics::MetricsBackend*>> const&)
-art::MemMap::MapPlaceholder(char const*, unsigned char*, unsigned int)
 
 
 sampling/libbinder.afdo
@@ -300,26 +260,6 @@ __dl__Z28is_symbol_global_and_definedPK6soinfoPK9elf64_sym
 __dl__ZNSt3__121__murmur2_or_cityhashImLm64EEclEPKvm
 __dl__ZN7android4base5SplitERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEES9_
 __dl__ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2ERKS5_mmRKS4_
-
-
-sampling/linker_arm.afdo
-====
-__dl__ZN6soinfo17call_constructorsEv
-__dl__ZL29__linker_init_post_relocationR19KernelArgumentBlockR6soinfo
-__dl_async_safe_format_fd_va_list
-__dl___vfprintf
-__dl__ZN16SymbolLookupList19set_dt_symbolic_libEP6soinfo
-__dl__ZL15get_cpu_variantv
-__dl_android_fdsan_close_with_tag
-__dl__ZL11fdsan_errorPKcz
-__dl__Z23init_default_namespacesPKc
-__dl__ZN6soinfo16call_destructorsEv
-__dl_android_fdsan_exchange_owner_tag
-__dl__ZNSt3__112__hash_tableINS_17__hash_value_typeINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEP15NamespaceConfigEENS_22__unordered_map_hasherIS7_SA_NS_4hashIS7_EELb1EEENS_21__unordered_map_equalIS7_SA_NS_8equal_toIS7_EELb1EEENS5_ISA_EEE25__emplace_unique_key_argsIS7_JRKNS_21piecewise_construct_tENS_5tupleIJOS7_EEENSP_IJEEEEEENS_4pairINS_15__hash_iteratorIPNS_11__hash_nodeISA_PvEEEEbEERKT_DpOT0_
-__dl__ZNSt3__112__hash_tableINS_17__hash_value_typeINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEP19android_namespace_tEENS_22__unordered_map_hasherIS7_SA_NS_4hashIS7_EELb1EEENS_21__unordered_map_equalIS7_SA_NS_8equal_toIS7_EELb1EEENS5_ISA_EEE25__emplace_unique_key_argsIS7_JRKNS_21piecewise_construct_tENS_5tupleIJOS7_EEENSP_IJEEEEEENS_4pairINS_15__hash_iteratorIPNS_11__hash_nodeISA_PvEEEEbEERKT_DpOT0_
-__dl__ZNK6soinfo10elf_lookupER10SymbolNamePK12version_info
-__dl__ZN6Config18read_binary_configEPKcS1_bbPPKS_PNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEE
-__dl__ZL9FindEntryPK10ZipArchiveNSt3__117basic_string_viewIcNS2_11char_traitsIcEEEEyP10ZipEntry64
 
 
 sampling/lmkd.afdo
