@@ -27,9 +27,6 @@ fdo_profile {
 fdo_profile {
     name: "libart",
     arch: {
-        arm: {
-            profile: "libart_arm.afdo",
-        },
         arm64: {
             profile: "libart_arm64.afdo",
         }
@@ -39,9 +36,6 @@ fdo_profile {
 fdo_profile {
     name: "libartbase",
     arch: {
-        arm: {
-            profile: "libartbase_arm.afdo",
-        },
         arm64: {
             profile: "libartbase_arm64.afdo",
         }
@@ -101,9 +95,6 @@ fdo_profile {
 fdo_profile {
     name: "linker",
     arch: {
-        arm: {
-            profile: "linker_arm.afdo",
-        },
         arm64: {
             profile: "linker_arm64.afdo",
         }
