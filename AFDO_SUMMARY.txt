@@ -102,6 +102,26 @@ std::__1::__itoa::__u64toa(unsigned long, char*)
 std::__1::__shared_mutex_base::lock_shared()
 
 
+sampling/libcrypto.afdo
+====
+md5_block_data_order
+sha256_final_impl
+x25519_ge_scalarmult_small_precomp
+fiat_p256_square
+ERR_clear_error
+fiat_p256_mul
+fe_mul_impl
+bn_mul_add_words
+SHA256_Update
+OPENSSL_free
+HMAC_Init_ex
+ctr_drbg_update
+X25519
+fiat_p256_point_double
+CRYPTO_get_thread_local
+ec_GFp_mont_mul
+
+
 sampling/libgui.afdo
 ====
 android::TransactionCompletedListener::onTransactionCompleted(android::ListenerStats)
@@ -202,6 +222,26 @@ android::SensorService::isUidActive(unsigned int)
 android::SensorServiceUtil::RecentEventLogger::addEvent(sensors_event_t const&)
 
 
+sampling/libsqlite.afdo
+====
+sqlite3VdbeExec
+balance
+btreeParseCellPtr
+sqlite3BtreeNext
+sqlite3BtreeIndexMoveto
+vdbeRecordCompareString
+sqlite3BtreeTableMoveto
+getCellInfo
+sqlite3VdbeSerialGet
+sqlite3VdbeRecordCompareWithSkip
+vdbeCompareMemString
+getPageNormal
+getAndInitPage
+sqlite3VdbeIdxRowid
+pcache1Fetch
+sqlite3GetVarint
+
+
 sampling/libui.afdo
 ====
 std::__1::vector<android::Rect, android::InlineStdAllocator<android::Rect, 4ul>>::reserve(unsigned long)
@@ -272,6 +312,11 @@ Watchdog::start()
 Watchdog::stop()
 zoneinfo_parse(zoneinfo*) (.__uniq.220333500789862702810363420933441579510)
 stop_wait_for_proc_kill(bool) (.__uniq.220333500789862702810363420933441579510)
+
+
+sampling/server_configurable_flags.afdo
+====
+server_configurable_flags::GetServerConfigurableFlag(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&)
 
 
 sampling/surfaceflinger.afdo
