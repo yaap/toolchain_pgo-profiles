@@ -110,3 +110,20 @@ fdo_profile {
     name: "surfaceflinger",
     profile: "surfaceflinger.afdo"
 }
+
+fdo_profile {
+    name: "libsqlite",
+    profile: "libsqlite.afdo",
+    native_bridge_supported: true,
+}
+
+fdo_profile {
+    name: "libcrypto",
+    profile: "libcrypto.afdo",
+    native_bridge_supported: true,
+}
+
+fdo_profile {
+    name: "server_configurable_flags",
+    profile: "server_configurable_flags.afdo"
+}
