@@ -1,8 +1,1 @@
-# Default maintainers and code reviewers for PGO
-appujee@google.com
-pirama@google.com
-srhines@google.com
-yabinc@google.com
-yikong@google.com
-# mailing list cannot be a reviewer yet
-# android-llvm-dev+owners-review@google.com
+include platform/prebuilts/clang/host/linux-x86:/OWNERS
