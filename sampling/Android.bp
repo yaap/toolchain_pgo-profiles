@@ -67,7 +67,11 @@ fdo_profile {
 
 fdo_profile {
     name: "libhwui",
-    profile: "libhwui.afdo",
+    arch: {
+        arm64: {
+            profile: "libhwui_arm64.afdo",
+        }
+    }
 }
 
 fdo_profile {
