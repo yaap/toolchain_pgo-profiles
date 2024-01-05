@@ -49,6 +49,12 @@ fdo_profile {
 }
 
 fdo_profile {
+    name: "libbinder_ndk",
+    profile: "libbinder_ndk.afdo",
+    native_bridge_supported: true,
+}
+
+fdo_profile {
     name: "libc++",
     profile: "libc++.afdo",
     native_bridge_supported: true,
