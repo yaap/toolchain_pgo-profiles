@@ -129,8 +129,12 @@ fdo_profile {
 
 fdo_profile {
     name: "libcrypto",
-    profile: "libcrypto.afdo",
-    native_bridge_supported: true,
+    arch: {
+        arm64: {
+            profile: "libcrypto_arm64.afdo",
+            native_bridge_supported: true,
+        }
+    }
 }
 
 fdo_profile {
