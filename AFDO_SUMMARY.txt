@@ -7,39 +7,39 @@ sampling/keystore2.afdo
 <core::hash::sip::Hasher<core::hash::sip::Sip13Rounds> as core::hash::Hasher>::write
 <watchdog_rs::Watchdog>::watch_with_optional
 <watchdog_rs::WatchPoint as core::ops::drop::Drop>::drop
+<rusqlite::statement::Statement>::bind_parameters::<&[&dyn rusqlite::types::to_sql::ToSql]>
 <rusqlite::statement::Statement>::value_ref
 <rusqlite::row::Row>::get::<usize, i32>
-<rusqlite::statement::Statement>::bind_parameters::<&[&dyn rusqlite::types::to_sql::ToSql]>
 <i32 as binder::parcel::parcelable::Serialize>::serialize
-<keystore2::security_level::KeystoreSecurityLevel>::store_new_key
 <core::hash::sip::Hasher<core::hash::sip::Sip13Rounds> as core::hash::Hasher>::write
 <std::sys::pal::unix::time::Timespec>::sub_timespec
-<rusqlite::row::Rows as fallible_streaming_iterator::FallibleStreamingIterator>::advance
+<keystore2::security_level::KeystoreSecurityLevel>::store_new_key
+<keystore2::security_level::KeystoreSecurityLevel as android_system_keystore2::aidl::android::system::keystore2::IKeystoreSecurityLevel::IKeystoreSecurityLevel>::createOperation
 <<std::thread::Builder>::spawn_unchecked_<<watchdog_rs::Watchdog>::spawn_thread::{closure#0}, ()>::{closure#1} as core::ops::function::FnOnce<()>>::call_once::{shim:vtable#0}
-<keystore2::security_level::KeystoreSecurityLevel>::create_operation
 <alloc::string::String as core::fmt::Write>::write_str
+<rusqlite::row::Rows as fallible_streaming_iterator::FallibleStreamingIterator>::advance
 <keystore2::database::KeystoreDB>::load_key_components
 <i32 as binder::parcel::parcelable::Deserialize>::deserialize
 
 
 sampling/libart_arm64.afdo
 ====
-art::gc::collector::MarkCompact::CompactionPhase()
 art::gc::collector::MarkCompact::MarkingPhase()
 art::CodeInfo::CodeInfo(unsigned char const*, unsigned long*)
 art::CodeInfo::CodeInfo(unsigned char const*, unsigned long*)
-art::System_arraycopy(_JNIEnv*, _jclass*, _jobject*, int, _jobject*, int, int) (.__uniq.110717464938643750821353004938495288567)
+unsigned long art::mirror::Object::VisitRefsForCompaction<false, false, (art::VerifyObjectFlags)0, (art::ReadBarrierOption)2, art::gc::collector::MarkCompact::RefsUpdateVisitor<false, false>>(art::gc::collector::MarkCompact::RefsUpdateVisitor<false, false> const&, art::MemberOffset, art::MemberOffset)
 void art::mirror::ObjectArray<art::mirror::Object>::VisitReferences<art::gc::collector::MarkCompact::RefFieldsVisitor>(art::gc::collector::MarkCompact::RefFieldsVisitor const&)
 art::CodeInfo::GetStackMapForNativePcOffset(unsigned long, art::InstructionSet) const
-void art::ArtMethod::VisitRoots<(art::ReadBarrierOption)0, true, art::gc::collector::MarkCompact::RefFieldsVisitor const>(art::gc::collector::MarkCompact::RefFieldsVisitor const&, art::PointerSize)
 art::Mutex::ExclusiveLock(art::Thread*)
+void art::ArtMethod::VisitRoots<(art::ReadBarrierOption)0, true, art::gc::collector::MarkCompact::RefFieldsVisitor const>(art::gc::collector::MarkCompact::RefFieldsVisitor const&, art::PointerSize)
 void art::mirror::Class::VisitReferences<true, (art::VerifyObjectFlags)0, (art::ReadBarrierOption)0, art::gc::collector::MarkCompact::RefFieldsVisitor>(art::ObjPtr<art::mirror::Class>, art::gc::collector::MarkCompact::RefFieldsVisitor const&)
 art::Mutex::ExclusiveUnlock(art::Thread*)
+art::System_arraycopy(_JNIEnv*, _jclass*, _jobject*, int, _jobject*, int, int) (.__uniq.110717464938643750821353004938495288567)
 void art::mirror::Object::VisitReferences<true, (art::VerifyObjectFlags)0, (art::ReadBarrierOption)0, art::gc::collector::MarkCompact::RefFieldsVisitor, art::gc::collector::MarkCompact::RefFieldsVisitor>(art::gc::collector::MarkCompact::RefFieldsVisitor const&, art::gc::collector::MarkCompact::RefFieldsVisitor const&)
+void art::gc::accounting::SpaceBitmap<8ul>::VisitMarkedRange<false, art::gc::collector::MarkCompact::UpdateNonMovingPage(art::mirror::Object*, unsigned char*, long, art::gc::accounting::SpaceBitmap<8ul>*)::$_0>(unsigned long, unsigned long, art::gc::collector::MarkCompact::UpdateNonMovingPage(art::mirror::Object*, unsigned char*, long, art::gc::accounting::SpaceBitmap<8ul>*)::$_0&&) const (.__uniq.183374210292502823066086304110507471210)
 void art::StackVisitor::WalkStack<(art::StackVisitor::CountTransitions)0>(bool)
-art::StringFactory_newStringFromBytes(_JNIEnv*, _jclass*, _jbyteArray*, int, int, int) (.__uniq.69738951954755148529605360874931303746)
 NterpGetMethod
-art::gc::collector::MarkCompact::VisitRoots(art::mirror::CompressedReference<art::mirror::Object>**, unsigned long, art::RootInfo const&)
+art::StringFactory_newStringFromBytes(_JNIEnv*, _jclass*, _jbyteArray*, int, int, int) (.__uniq.69738951954755148529605360874931303746)
 
 
 sampling/libartbase_arm64.afdo
@@ -53,8 +53,8 @@ art::ArenaBitVector::ArenaBitVector(art::ScopedArenaAllocator*, unsigned int, bo
 art::BitVector::BitVector(unsigned int, bool, art::Allocator*)
 art::BitVector::BitVector(unsigned int, bool, art::Allocator*)
 art::ArenaBitVectorAllocator<art::ScopedArenaAllocator>::Alloc(unsigned long)
-art::MicroTime()
 art::BitVector::UnionIfNotIn(art::BitVector const*, art::BitVector const*)
+art::MicroTime()
 art::ScopedArenaAllocator::~ScopedArenaAllocator()
 art::ScopedArenaAllocator::~ScopedArenaAllocator()
 art::ScopedArenaAllocator::ScopedArenaAllocator(art::ArenaStack*)
@@ -68,38 +68,38 @@ android::Parcel::writeInt32(int)
 android::Parcel::readInt32(int*) const
 android::Parcel::readInt32() const
 android::IPCThreadState::executeCommand(int)
-android::Parcel::writeInt64(long)
 android::Parcel::setDataSize(unsigned long)
-android::Parcel::writeInplace(unsigned long)
-android::Parcel::writeInterfaceToken(char16_t const*, unsigned long)
+android::Parcel::continueWrite(unsigned long)
 android::IPCThreadState::transact(int, unsigned int, android::Parcel const&, android::Parcel*, unsigned int)
 android::IPCThreadState::joinThreadPool(bool)
 android::Parcel::ipcSetDataReference(unsigned char const*, unsigned long, unsigned long long const*, unsigned long, void (*)(unsigned char const*, unsigned long, unsigned long long const*, unsigned long))
 android::Parcel::freeDataNoInit()
+android::Parcel::writeInterfaceToken(char16_t const*, unsigned long)
 android::Parcel::enforceInterface(char16_t const*, unsigned long, android::IPCThreadState*) const
-android::Parcel::flattenBinder(android::sp<android::IBinder> const&)
 android::IPCThreadState::self()
 android::Parcel::unflattenBinder(android::sp<android::IBinder>*) const
+android::Parcel::flattenBinder(android::sp<android::IBinder> const&)
+android::Parcel::writeInplace(unsigned long)
 
 
 sampling/libbinder_ndk.afdo
 ====
 PruneStatusT(int)
 AParcel_getDataPosition
+getTraceSectionName(AIBinder_Class const*, unsigned int, bool)
 AParcel_readParcelableArray
 AParcel_writeInt32
+AIBinder_transact
+int ReadArray<char16_t>(AParcel const*, void*, bool (*)(void*, int, char16_t**))
 int WriteArray<char16_t>(AParcel*, char16_t const*, int)
 AParcel_setDataPosition
-int ReadArray<char16_t>(AParcel const*, void*, bool (*)(void*, int, char16_t**))
 AParcel_readInt32
-AIBinder_transact
 AParcel_writeParcelableArray
 AIBinder_prepareTransaction
-int android::Parcel::readData<std::__1::optional<android::os::ParcelFileDescriptor>, true>(std::__1::optional<android::os::ParcelFileDescriptor>*) const
-int ReadArray<unsigned int>(AParcel const*, void*, bool (*)(void*, int, unsigned int**))
-int ReadArray<float>(AParcel const*, void*, bool (*)(void*, int, float**))
-int ReadArray<int>(AParcel const*, void*, bool (*)(void*, int, int**))
+ABBinder::onTransact(unsigned int, android::Parcel const&, android::Parcel*, unsigned int)
 AStatus_delete
+int ReadArray<int>(AParcel const*, void*, bool (*)(void*, int, int**))
+int ReadArray<unsigned int>(AParcel const*, void*, bool (*)(void*, int, unsigned int**))
 
 
 sampling/libcrypto.afdo
@@ -109,17 +109,17 @@ SHA256_Update
 OPENSSL_free
 CRYPTO_get_thread_local
 OPENSSL_malloc
-HMAC_Init_ex
+copy_from_prebuf
 EVP_DigestInit_ex
 EVP_DigestFinal_ex
-OPENSSL_cleanse
 sha256_init
+OPENSSL_cleanse
 EVP_MD_CTX_destroy
-md5_block_data_order
 EVP_DigestUpdate
-EVP_MD_CTX_copy_ex
-HMAC_Final
-PKCS5_PBKDF2_HMAC
+HMAC_Init_ex
+EVP_MD_CTX_create
+md5_block_data_order
+sha256_final
 
 
 sampling/libgui.afdo
@@ -128,78 +128,78 @@ void std::__1::__hash_table<std::__1::__hash_value_type<android::CallbackId, and
 android::layer_state_t::layer_state_t()
 android::layer_state_t::layer_state_t()
 void std::__1::vector<android::gui::WindowInfo, std::__1::allocator<android::gui::WindowInfo>>::__assign_with_size[abi:nn190000]<android::gui::WindowInfo*, android::gui::WindowInfo*>(android::gui::WindowInfo*, android::gui::WindowInfo*, long)
-std::__1::pair<std::__1::__hash_iterator<std::__1::__hash_node<std::__1::__hash_value_type<android::sp<android::IBinder>, android::ComposerState>, void*>*>, bool> std::__1::__hash_table<std::__1::__hash_value_type<android::sp<android::IBinder>, android::ComposerState>, std::__1::__unordered_map_hasher<android::sp<android::IBinder>, std::__1::__hash_value_type<android::sp<android::IBinder>, android::ComposerState>, android::SurfaceComposerClient::IBinderHash, std::__1::equal_to<android::sp<android::IBinder>>, true>, std::__1::__unordered_map_equal<android::sp<android::IBinder>, std::__1::__hash_value_type<android::sp<android::IBinder>, android::ComposerState>, std::__1::equal_to<android::sp<android::IBinder>>, android::SurfaceComposerClient::IBinderHash, true>, std::__1::allocator<std::__1::__hash_value_type<android::sp<android::IBinder>, android::ComposerState>>>::__emplace_unique_key_args<android::sp<android::IBinder>, std::__1::piecewise_construct_t const&, std::__1::tuple<android::sp<android::IBinder> const&>, std::__1::tuple<>>(android::sp<android::IBinder> const&, std::__1::piecewise_construct_t const&, std::__1::tuple<android::sp<android::IBinder> const&>&&, std::__1::tuple<>&&)
 android::SurfaceComposerClient::Transaction::getLayerState(android::sp<android::SurfaceControl> const&)
+std::__1::pair<std::__1::__hash_iterator<std::__1::__hash_node<std::__1::__hash_value_type<android::sp<android::IBinder>, android::ComposerState>, void*>*>, bool> std::__1::__hash_table<std::__1::__hash_value_type<android::sp<android::IBinder>, android::ComposerState>, std::__1::__unordered_map_hasher<android::sp<android::IBinder>, std::__1::__hash_value_type<android::sp<android::IBinder>, android::ComposerState>, android::SurfaceComposerClient::IBinderHash, std::__1::equal_to<android::sp<android::IBinder>>, true>, std::__1::__unordered_map_equal<android::sp<android::IBinder>, std::__1::__hash_value_type<android::sp<android::IBinder>, android::ComposerState>, std::__1::equal_to<android::sp<android::IBinder>>, android::SurfaceComposerClient::IBinderHash, true>, std::__1::allocator<std::__1::__hash_value_type<android::sp<android::IBinder>, android::ComposerState>>>::__emplace_unique_key_args<android::sp<android::IBinder>, std::__1::piecewise_construct_t const&, std::__1::tuple<android::sp<android::IBinder> const&>, std::__1::tuple<>>(android::sp<android::IBinder> const&, std::__1::piecewise_construct_t const&, std::__1::tuple<android::sp<android::IBinder> const&>&&, std::__1::tuple<>&&)
 std::__1::pair<std::__1::__hash_iterator<std::__1::__hash_node<std::__1::__hash_value_type<android::sp<android::ITransactionCompletedListener>, android::SurfaceComposerClient::CallbackInfo>, void*>*>, bool> std::__1::__hash_table<std::__1::__hash_value_type<android::sp<android::ITransactionCompletedListener>, android::SurfaceComposerClient::CallbackInfo>, std::__1::__unordered_map_hasher<android::sp<android::ITransactionCompletedListener>, std::__1::__hash_value_type<android::sp<android::ITransactionCompletedListener>, android::SurfaceComposerClient::CallbackInfo>, android::SurfaceComposerClient::TCLHash, std::__1::equal_to<android::sp<android::ITransactionCompletedListener>>, true>, std::__1::__unordered_map_equal<android::sp<android::ITransactionCompletedListener>, std::__1::__hash_value_type<android::sp<android::ITransactionCompletedListener>, android::SurfaceComposerClient::CallbackInfo>, std::__1::equal_to<android::sp<android::ITransactionCompletedListener>>, android::SurfaceComposerClient::TCLHash, true>, std::__1::allocator<std::__1::__hash_value_type<android::sp<android::ITransactionCompletedListener>, android::SurfaceComposerClient::CallbackInfo>>>::__emplace_unique_key_args<android::sp<android::ITransactionCompletedListener>, std::__1::piecewise_construct_t const&, std::__1::tuple<android::sp<android::ITransactionCompletedListener>&&>, std::__1::tuple<>>(android::sp<android::ITransactionCompletedListener> const&, std::__1::piecewise_construct_t const&, std::__1::tuple<android::sp<android::ITransactionCompletedListener>&&>&&, std::__1::tuple<>&&)
 android::TransactionCompletedListener::onTransactionCompleted(android::ListenerStats)
-android::layer_state_t::read(android::Parcel const&)
+android::half::ftoh(float)
 android::Vector<android::ComposerState>::do_splat(void*, void const*, unsigned long) const
+android::layer_state_t::read(android::Parcel const&)
 android::gui::WindowInfosUpdate::readFromParcel(android::Parcel const*)
 android::SurfaceComposerClient::Transaction::apply(bool, bool)
-std::__1::pair<std::__1::__hash_iterator<std::__1::__hash_node<android::sp<android::SurfaceControl>, void*>*>, bool> std::__1::__hash_table<android::sp<android::SurfaceControl>, android::SurfaceComposerClient::SCHash, std::__1::equal_to<android::sp<android::SurfaceControl>>, std::__1::allocator<android::sp<android::SurfaceControl>>>::__emplace_unique_key_args<android::sp<android::SurfaceControl>, android::sp<android::SurfaceControl> const&>(android::sp<android::SurfaceControl> const&, android::sp<android::SurfaceControl> const&)
-android::layer_state_t::write(android::Parcel&) const
-android::BufferQueueProducer::queueBuffer(int, android::IGraphicBufferProducer::QueueBufferInput const&, android::IGraphicBufferProducer::QueueBufferOutput*)
 std::__1::pair<std::__1::__hash_iterator<std::__1::__hash_node<std::__1::__hash_value_type<android::CallbackId, android::TransactionCompletedListener::CallbackTranslation>, void*>*>, bool> std::__1::__hash_table<std::__1::__hash_value_type<android::CallbackId, android::TransactionCompletedListener::CallbackTranslation>, std::__1::__unordered_map_hasher<android::CallbackId, std::__1::__hash_value_type<android::CallbackId, android::TransactionCompletedListener::CallbackTranslation>, android::CallbackIdHash, std::__1::equal_to<android::CallbackId>, true>, std::__1::__unordered_map_equal<android::CallbackId, std::__1::__hash_value_type<android::CallbackId, android::TransactionCompletedListener::CallbackTranslation>, std::__1::equal_to<android::CallbackId>, android::CallbackIdHash, true>, std::__1::allocator<std::__1::__hash_value_type<android::CallbackId, android::TransactionCompletedListener::CallbackTranslation>>>::__emplace_unique_key_args<android::CallbackId, std::__1::piecewise_construct_t const&, std::__1::tuple<android::CallbackId const&>, std::__1::tuple<>>(android::CallbackId const&, std::__1::piecewise_construct_t const&, std::__1::tuple<android::CallbackId const&>&&, std::__1::tuple<>&&)
+android::layer_state_t::write(android::Parcel&) const
+android::ConsumerFrameEventHistory::getAndResetDelta(android::FrameEventHistoryDelta*)
 
 
 sampling/libharfbuzz_ng.afdo
 ====
 apply_forward(OT::hb_ot_apply_context_t*, OT::hb_ot_layout_lookup_accelerator_t const&, unsigned int) (.__uniq.112624515275334661450839245565361455594)
 OT::Layout::Common::Coverage::get_coverage(unsigned int) const
-bool OT::GSUBGPOSVersion1_2<OT::Layout::SmallTypes>::sanitize<OT::Layout::GSUB_impl::SubstLookup>(hb_sanitize_context_t*) const
-hb_ot_map_t::substitute(hb_ot_shape_plan_t const*, hb_font_t*, hb_buffer_t*) const
 _hb_ot_shape
+hb_ot_map_t::substitute(hb_ot_shape_plan_t const*, hb_font_t*, hb_buffer_t*) const
 OT::Layout::GPOS_impl::PairPosFormat2_4<OT::Layout::SmallTypes>::apply(OT::hb_ot_apply_context_t*) const
-hb_ot_map_t::position(hb_ot_shape_plan_t const*, hb_font_t*, hb_buffer_t*) const
-OT::ChainContextFormat3::sanitize(hb_sanitize_context_t*) const
-hb_ucd_script(hb_unicode_funcs_t*, unsigned int, void*) (.__uniq.59232151634540459760808551162038034331)
-bool OT::GSUBGPOSVersion1_2<OT::Layout::SmallTypes>::sanitize<OT::Layout::GPOS_impl::PosLookup>(hb_sanitize_context_t*) const
+OT::Layout::GPOS_impl::PairPosFormat1_3<OT::Layout::SmallTypes>::apply(OT::hb_ot_apply_context_t*) const
 OT::hb_ot_apply_context_t::hb_ot_apply_context_t(unsigned int, hb_font_t*, hb_buffer_t*, hb_blob_t*)
+hb_ucd_script(hb_unicode_funcs_t*, unsigned int, void*) (.__uniq.59232151634540459760808551162038034331)
 OT::ClassDef::get_class(unsigned int) const
-decltype(fp.sanitize(this)) hb_sanitize_context_t::_dispatch<OT::Layout::Common::Coverage>(OT::Layout::Common::Coverage const&, hb_priority<1u>)
 hb_font_t::get_glyph_h_origin_with_fallback(unsigned int, int*, int*)
+bool OT::GSUBGPOSVersion1_2<OT::Layout::SmallTypes>::sanitize<OT::Layout::GPOS_impl::PosLookup>(hb_sanitize_context_t*) const
 OT::Layout::GSUB_impl::Ligature<OT::Layout::SmallTypes>::apply(OT::hb_ot_apply_context_t*) const
-OT::Layout::GPOS_impl::MarkRecord::sanitize(hb_sanitize_context_t*, void const*) const
+bool OT::GSUBGPOSVersion1_2<OT::Layout::SmallTypes>::sanitize<OT::Layout::GSUB_impl::SubstLookup>(hb_sanitize_context_t*) const
+hb_ot_map_t::position(hb_ot_shape_plan_t const*, hb_font_t*, hb_buffer_t*) const
+OT::Layout::GSUB_impl::LigatureSet<OT::Layout::SmallTypes>::apply(OT::hb_ot_apply_context_t*) const
+hb_buffer_add_utf16
 
 
 sampling/libhidlbase.afdo
 ====
 android::hardware::IPCThreadState::selfOrNull()
 android::hardware::fetchPidsForPassthroughLibraries(std::__1::map<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, android::hidl::manager::V1_0::IServiceManager::InstanceDebugInfo, std::__1::less<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const, android::hidl::manager::V1_0::IServiceManager::InstanceDebugInfo>>>*) (.__uniq.204812933270518593069265523496558073993)
+android::hardware::IPCThreadState::joinThreadPool(bool)
 android::hardware::Parcel::freeDataNoInit()
-android::hardware::IPCThreadState::transact(int, unsigned int, android::hardware::Parcel const&, android::hardware::Parcel*, unsigned int)
 android::hardware::Parcel::setDataSize(unsigned long)
-android::hardware::Parcel::writeBuffer(void const*, unsigned long, unsigned long*)
 android::hardware::Parcel::writeInt32(int)
 android::hardware::ProcessState::self()
-android::hardware::IPCThreadState::joinThreadPool(bool)
-android::hardware::Parcel::writeInterfaceToken(char const*)
 android::hardware::Parcel::initState()
-android::hardware::Parcel::writeEmbeddedBuffer(void const*, unsigned long, unsigned long*, unsigned long, unsigned long)
 android::hardware::Parcel::ipcSetDataReference(unsigned char const*, unsigned long, unsigned long long const*, unsigned long, void (*)(android::hardware::Parcel*, unsigned char const*, unsigned long, unsigned long long const*, unsigned long, void*), void*)
-android::hardware::IPCThreadState::talkWithDriver(bool)
+android::hardware::IPCThreadState::transact(int, unsigned int, android::hardware::Parcel const&, android::hardware::Parcel*, unsigned int)
 android::hardware::Parcel::readNullableEmbeddedBuffer(unsigned long, unsigned long*, unsigned long, unsigned long, void const**) const
+android::hardware::Parcel::writeBuffer(void const*, unsigned long, unsigned long*)
+android::hardware::BHwBinder::transact(unsigned int, android::hardware::Parcel const&, android::hardware::Parcel*, unsigned int, std::__1::function<void (android::hardware::Parcel&)>)
 android::hardware::Parcel::readBuffer(unsigned long, unsigned long*, void const**) const
+android::hardware::Parcel::~Parcel()
+android::hardware::Parcel::~Parcel()
 
 
 sampling/libhwui_arm64.afdo
 ====
-neon::lowp::bilerp_clamp_8888(SkRasterPipelineStage*, unsigned long, unsigned long, unsigned short vector[8], unsigned short vector[8], unsigned short vector[8], unsigned short vector[8], unsigned short vector[8], unsigned short vector[8], unsigned short vector[8], unsigned short vector[8]) (.__uniq.171973291814702829445853707239222793327)
 neon::S32_alpha_D32_filter_DX(SkBitmapProcState const&, unsigned int const*, int, unsigned int*)
+neon::lowp::bilerp_clamp_8888(SkRasterPipelineStage*, unsigned long, unsigned long, unsigned short vector[8], unsigned short vector[8], unsigned short vector[8], unsigned short vector[8], unsigned short vector[8], unsigned short vector[8], unsigned short vector[8], unsigned short vector[8]) (.__uniq.171973291814702829445853707239222793327)
 android::uirenderer::RenderNode::prepareTreeImpl(android::uirenderer::TreeObserver&, android::uirenderer::TreeInfo&, bool)
-SkMatrixPriv::MapRect(SkM44 const&, SkRect const&)
-void filter_scale<&clamp(int, int), &clamp(int, int), &extract_low_bits_clamp_clamp(int, int), true>(SkBitmapProcState const&, unsigned int*, int, int, int) (.__uniq.325964652190161525160875187559210144483)
-skgpu::KeyBuilder::addBits(unsigned int, unsigned int, std::__1::basic_string_view<char, std::__1::char_traits<char>>)
-android::FileBlobCache::FileBlobCache(unsigned long, unsigned long, unsigned long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&)
 skgpu::ganesh::ClipStack::clipRect(SkMatrix const&, SkRect const&, GrAA, SkClipOp)
-android::uirenderer::skiapipeline::SkiaDisplayList::prepareListAndChildren(android::uirenderer::TreeObserver&, android::uirenderer::TreeInfo&, bool, std::__1::function<void (android::uirenderer::RenderNode*, android::uirenderer::TreeObserver&, android::uirenderer::TreeInfo&, bool)>)
+android::FileBlobCache::FileBlobCache(unsigned long, unsigned long, unsigned long, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&)
+skgpu::KeyBuilder::addBits(unsigned int, unsigned int, std::__1::basic_string_view<char, std::__1::char_traits<char>>)
 neon::bilerp_clamp_8888(SkRasterPipelineStage*, unsigned long, unsigned long, std::byte*, float vector[4], float vector[4], float vector[4], float vector[4], float vector[4], float vector[4], float vector[4], float vector[4]) (.__uniq.171973291814702829445853707239222793327)
+android::uirenderer::skiapipeline::SkiaDisplayList::prepareListAndChildren(android::uirenderer::TreeObserver&, android::uirenderer::TreeInfo&, bool, std::__1::function<void (android::uirenderer::RenderNode*, android::uirenderer::TreeObserver&, android::uirenderer::TreeInfo&, bool)>)
 GetCoeffsFast(VP8BitReader*, VP8BandProbas const* const*, int, int const*, int, short*) (.__uniq.221674093421751675605877729630738212549)
+SkMaskBlurFilter::blur(SkMask const&, SkMaskBuilder*) const
 aaa_walk_edges(SkAnalyticEdge*, SkAnalyticEdge*, SkPathFillType, AdditiveBlitter*, int, int, int, int, bool, bool, bool) (.__uniq.264207111679842201773772860248711733734)
 SkCanvas::restoreToCount(int)
+SkMatrixPriv::MapRect(SkM44 const&, SkRect const&)
+neon::blit_row_s32a_opaque(unsigned int*, unsigned int const*, int, unsigned int)
 android::uirenderer::DamageAccumulator::popTransform()
-SkPixmap::erase(SkRGBA4f<(SkAlphaType)3> const&, SkIRect const*) const::$_2::__invoke(void*, unsigned long, int) (.__uniq.103869986389962304611952474125010404420)
-SkMaskBlurFilter::blur(SkMask const&, SkMaskBuilder*) const
+void filter_scale<&clamp(int, int), &clamp(int, int), &extract_low_bits_clamp_clamp(int, int), true>(SkBitmapProcState const&, unsigned int*, int, int, int) (.__uniq.325964652190161525160875187559210144483)
 
 
 sampling/liblog.afdo
@@ -213,9 +213,8 @@ __android_log_get_minimum_priority
 std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__assign_external(char const*, unsigned long)
 write_to_log(log_id, iovec*, unsigned long) (.__uniq.220335083604911598582518859745105420324)
 __android_log_logd_logger
-log_to_file_if_overridden(__android_log_message const*) (.__uniq.220335083604911598582518859745105420324)
 __android_log_buf_write
-__android_log_print
+log_to_file_if_overridden(__android_log_message const*) (.__uniq.220335083604911598582518859745105420324)
 GetDefaultTag()
 __android_log_write_log_message
 android::base::ErrnoRestorer::~ErrnoRestorer()
@@ -225,41 +224,41 @@ android::base::ErrnoRestorer::ErrnoRestorer()
 sampling/libminikin.afdo
 ====
 minikin::FontCollection::init(std::__1::vector<std::__1::shared_ptr<minikin::FontFamily>, std::__1::allocator<std::__1::shared_ptr<minikin::FontFamily>>> const&)
+minikin::LayoutGlyph* std::__1::construct_at[abi:nn190000]<minikin::LayoutGlyph, minikin::FakedFont const&, unsigned int, unsigned long, float, float const&, minikin::LayoutGlyph*>(minikin::LayoutGlyph*, minikin::FakedFont const&, unsigned int&&, unsigned long&&, float&&, float const&)
 minikin::LayoutCacheKey::computeHash() const
 minikin::LayoutCacheKey::operator==(minikin::LayoutCacheKey const&) const
 minikin::Layout::appendLayout(minikin::LayoutPiece const&, unsigned long, float)
-minikin::getNextWordBreakForCache(minikin::U16StringPiece const&, unsigned int) (.cfi)
 std::__1::__hash_iterator<std::__1::__hash_node<android::LruCache<minikin::LayoutCacheKey, minikin::LayoutSlot*>::KeyedEntry*, void*>*> std::__1::__hash_table<android::LruCache<minikin::LayoutCacheKey, minikin::LayoutSlot*>::KeyedEntry*, android::LruCache<minikin::LayoutCacheKey, minikin::LayoutSlot*>::HashForEntry, android::LruCache<minikin::LayoutCacheKey, minikin::LayoutSlot*>::EqualityForHashedEntries, std::__1::allocator<android::LruCache<minikin::LayoutCacheKey, minikin::LayoutSlot*>::KeyedEntry*>>::find<android::LruCache<minikin::LayoutCacheKey, minikin::LayoutSlot*>::KeyedEntry*>(android::LruCache<minikin::LayoutCacheKey, minikin::LayoutSlot*>::KeyedEntry* const&)
+minikin::getNextWordBreakForCache(minikin::U16StringPiece const&, unsigned int) (.cfi)
+minikin::LayoutCacheKey::LayoutCacheKey(minikin::U16StringPiece const&, minikin::Range const&, minikin::MinikinPaint const&, bool, minikin::StartHyphenEdit, minikin::EndHyphenEdit)
 android::LruCache<minikin::LayoutCacheKey, minikin::LayoutSlot*>::get(minikin::LayoutCacheKey const&)
 minikin::getPrevWordBreakForCache(minikin::U16StringPiece const&, unsigned int) (.cfi)
-minikin::LayoutCacheKey::LayoutCacheKey(minikin::U16StringPiece const&, minikin::Range const&, minikin::MinikinPaint const&, bool, minikin::StartHyphenEdit, minikin::EndHyphenEdit)
 minikin::Layout::doLayoutRunCached(minikin::U16StringPiece const&, minikin::Range const&, bool, minikin::MinikinPaint const&, unsigned long, minikin::StartHyphenEdit, minikin::EndHyphenEdit, minikin::Layout*, float*, minikin::MinikinRect*, unsigned int*) (.cfi)
 minikin::Layout::doLayoutWord(unsigned short const*, unsigned long, unsigned long, unsigned long, bool, minikin::MinikinPaint const&, unsigned long, minikin::StartHyphenEdit, minikin::EndHyphenEdit, minikin::Layout*, float*, minikin::MinikinRect*, unsigned int*) (.cfi)
-void minikin::LayoutCache::getOrCreate<minikin::LayoutAppendFunctor>(minikin::U16StringPiece const&, minikin::Range const&, minikin::MinikinPaint const&, bool, minikin::StartHyphenEdit, minikin::EndHyphenEdit, bool, minikin::LayoutAppendFunctor&)
 minikin::SparseBitSet::nextSetBit(unsigned int) const
+void minikin::LayoutCache::getOrCreate<minikin::LayoutAppendFunctor>(minikin::U16StringPiece const&, minikin::Range const&, minikin::MinikinPaint const&, bool, minikin::StartHyphenEdit, minikin::EndHyphenEdit, bool, minikin::LayoutAppendFunctor&)
 minikin::Font::ExternalRefs::getAdjustedTypeface(int, int) const
 minikin::adjustGlyphLetterSpacingEdge(minikin::U16StringPiece const&, minikin::MinikinPaint const&, minikin::RunFlag, std::__1::vector<minikin::LayoutGlyph, std::__1::allocator<minikin::LayoutGlyph>>*) (.cfi)
-minikin::LayoutAppendFunctor::operator()(minikin::LayoutPiece const&, minikin::MinikinPaint const&, minikin::MinikinRect const&)
 
 
 sampling/libsensorservice.afdo
 ====
 android::SensorServiceUtil::SensorList::getInterface(int) const
-android::SensorService::SensorEventConnection::sendEvents(sensors_event_t const*, unsigned long, sensors_event_t*, android::wp<android::SensorService::SensorEventConnection const> const*)
 android::SensorService::threadLoop()
+android::SensorService::SensorEventConnection::sendEvents(sensors_event_t const*, unsigned long, sensors_event_t*, android::wp<android::SensorService::SensorEventConnection const> const*)
 android::SensorService::SensorEventConnection::hasOneShotSensors() const
 android::SensorService::SensorEventConnection::needsWakeLock()
-android::SensorDevice::poll(sensors_event_t*, unsigned long)
 android::AidlSensorHalWrapper::pollFmq(sensors_event_t*, unsigned long)
+android::SensorDevice::poll(sensors_event_t*, unsigned long)
 android::SensorService::isUidActive(unsigned int)
 android::hardware::sensors::implementation::convertToSensorEvent(aidl::android::hardware::sensors::Event const&, sensors_event_t*)
 android::SensorServiceUtil::RecentEventLogger::addEvent(sensors_event_t const&)
 android::SensorService::SensorEventConnection::hasSensor(int) const
-android::SensorDeviceUtils::quantizeSensorEventValues(sensors_event_t*, float)
 android::SensorService::isWakeUpSensorEvent(sensors_event_t const&) const
-android::SensorService::getSensorInterfaceFromHandle(int) const
-android::MessageQueueBase<android::details::AidlMQDescriptorShim, aidl::android::hardware::sensors::Event, (android::hardware::MQFlavor)1>::availableToReadBytes(android::MessageQueueBase<android::details::AidlMQDescriptorShim, aidl::android::hardware::sensors::Event, (android::hardware::MQFlavor)1>::Error*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>*) const
-android::BaseSensor::getSensor() const
+android::SensorDeviceUtils::quantizeSensorEventValues(sensors_event_t*, float)
+android::MessageQueueBase<android::details::AidlMQDescriptorShim, aidl::android::hardware::sensors::Event, (android::hardware::MQFlavor)1>::availableToReadBytes() const
+android::MessageQueueBase<android::details::AidlMQDescriptorShim, int, (android::hardware::MQFlavor)1>::availableToReadBytes() const
+android::MessageQueueBase<android::hardware::MQDescriptor, android::hardware::sensors::V2_1::Event, (android::hardware::MQFlavor)1>::availableToReadBytes() const
 
 
 sampling/libsqlite.afdo
@@ -270,16 +269,16 @@ vdbeRecordCompareString(int, void const*, UnpackedRecord*) (.__uniq.309426955368
 btreeParseCellPtr(MemPage*, unsigned char*, CellInfo*) (.__uniq.309426955368013975012700285756637552939)
 sqlite3RunParser(Parse*, char const*) (.__uniq.309426955368013975012700285756637552939)
 getPageNormal(Pager*, unsigned int, PgHdr**, int) (.__uniq.309426955368013975012700285756637552939)
-vdbeRecordCompareInt(int, void const*, UnpackedRecord*) (.__uniq.309426955368013975012700285756637552939)
 getCellInfo(BtCursor*) (.__uniq.309426955368013975012700285756637552939)
+vdbeRecordCompareInt(int, void const*, UnpackedRecord*) (.__uniq.309426955368013975012700285756637552939)
 btreeNext(BtCursor*) (.__uniq.309426955368013975012700285756637552939)
 pcache1FetchStage2(PCache1*, unsigned int, int) (.__uniq.309426955368013975012700285756637552939)
 pcache1Fetch(sqlite3_pcache*, unsigned int, int) (.__uniq.309426955368013975012700285756637552939)
 pcache1Unpin(sqlite3_pcache*, sqlite3_pcache_page*, int) (.__uniq.309426955368013975012700285756637552939)
+sqlite3BtreeIndexMoveto(BtCursor*, UnpackedRecord*, int*) (.__uniq.309426955368013975012700285756637552939)
 dbMallocRawFinish(sqlite3*, unsigned long long) (.__uniq.309426955368013975012700285756637552939)
 sqlite3VdbeMemTranslate(sqlite3_value*, unsigned char) (.__uniq.309426955368013975012700285756637552939)
-sqlite3BtreeIndexMoveto(BtCursor*, UnpackedRecord*, int*) (.__uniq.309426955368013975012700285756637552939)
-binCollFunc(void*, int, void const*, int, void const*) (.__uniq.309426955368013975012700285756637552939)
+pagerWalFrames(Pager*, PgHdr*, unsigned int, int) (.__uniq.309426955368013975012700285756637552939)
 
 
 sampling/libui.afdo
@@ -293,9 +292,9 @@ android::Region::~Region()
 android::Region::Region()
 android::Region::Region()
 android::Region::operator=(android::Region const&)
+android::Region::Region(android::Region const&)
+android::Region::Region(android::Region const&)
 std::__1::vector<android::Rect, android::InlineStdAllocator<android::Rect, 4ul>>::__destroy_vector::operator()[abi:nn190000]()
-android::Region::Region(android::Region const&)
-android::Region::Region(android::Region const&)
 android::Region::rasterizer::~rasterizer()
 android::Region::rasterizer::~rasterizer()
 android::Region::boolean_operation(unsigned int, android::Region&, android::Region const&, android::Rect const&, int, int)
@@ -307,59 +306,59 @@ sampling/libutils.afdo
 android::RefBase::decStrong(void const*) const
 systemTime
 utf8_to_utf16
-android::RefBase::weakref_type::attemptIncStrong(void const*)
 android::RefBase::incStrong(void const*) const
+android::RefBase::weakref_type::attemptIncStrong(void const*)
 android::Looper::pollOnce(int, int*, int*, void**)
 utf16_to_utf8
-utf8_to_utf16_length
 android::VectorImpl::clear()
-strzcmp16
+utf8_to_utf16_length
 utf16_to_utf8_length
+strzcmp16
 android::uptimeMillis()
 android::SortedVectorImpl::indexOf(void const*) const
 android::elapsedRealtime()
-android::SharedBuffer::release(unsigned int) const
 android::SharedBuffer::alloc(unsigned long)
+android::SharedBuffer::release(unsigned int) const
 
 
 sampling/libz.afdo
 ====
 longest_match(internal_state*, unsigned int) (.__uniq.846982182549687996375565254981381303)
-deflate_slow(internal_state*, int) (.__uniq.846982182549687996375565254981381303)
 inflate_fast
+deflate_slow(internal_state*, int) (.__uniq.846982182549687996375565254981381303)
 compress_block(internal_state*, ct_data_s const*, ct_data_s const*) (.__uniq.177060090991000879816580501745395732528)
 inflate
-build_tree(internal_state*, tree_desc_s*) (.__uniq.177060090991000879816580501745395732528)
 inflate_table
+build_tree(internal_state*, tree_desc_s*) (.__uniq.177060090991000879816580501745395732528)
 deflate_fast(internal_state*, int) (.__uniq.846982182549687996375565254981381303)
 adler32_simd_
 fill_window(internal_state*) (.__uniq.846982182549687996375565254981381303)
 send_tree(internal_state*, ct_data_s*, int) (.__uniq.177060090991000879816580501745395732528)
 armv8_crc32_pmull_little
 _tr_flush_block
+updatewindow(z_stream_s*, unsigned char const*, unsigned int) (.__uniq.254430239329408450431167194504505577106)
 adler32_z
 crc32_combine
-adler32
 
 
 sampling/linker_arm64.afdo
 ====
 elf64_sym const* soinfo_do_lookup_impl<false>(char const*, version_info const*, soinfo**, SymbolLookupList const&) (.__uniq.331521225453620004837736674378903349473)
 calculate_gnu_hash_neon(char const*)
-do_dlsym(void*, char const*, char const*, void const*, void**)
 bool packed_relocate_impl<(RelocMode)1>(Relocator&, sleb128_decoder) (.__uniq.153370809355997480299804515629147722701)
+do_dlsym(void*, char const*, char const*, void const*, void**)
 find_libraries(android_namespace_t*, soinfo*, char const* const*, unsigned long, soinfo**, std::__1::vector<soinfo*, std::__1::allocator<soinfo*>>*, unsigned long, int, android_dlextinfo const*, bool, std::__1::vector<android_namespace_t*, std::__1::allocator<android_namespace_t*>>*)
-bool plain_relocate_impl<(RelocMode)1>(Relocator&, elf64_rela*, unsigned long) (.__uniq.153370809355997480299804515629147722701)
-BionicAllocator::alloc_impl(unsigned long, unsigned long)
-relocate_relr(unsigned long long const*, unsigned long long const*, unsigned long long)
 LinkerBlockAllocator::free(void*)
-OpenArchiveInternal(ZipArchive*, char const*)
+relocate_relr(unsigned long long const*, unsigned long long const*, unsigned long long)
+BionicAllocator::alloc_impl(unsigned long, unsigned long)
 android_namespace_t::is_accessible(soinfo*)
-bool plain_relocate_impl<(RelocMode)0>(Relocator&, elf64_rela*, unsigned long) (.__uniq.153370809355997480299804515629147722701)
+Config::read_binary_config(char const*, char const*, bool, bool, Config const**, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>*)
 LinkerBlockAllocator::alloc()
+OpenArchiveInternal(ZipArchive*, char const*)
+bool plain_relocate_impl<(RelocMode)0>(Relocator&, elf64_rela*, unsigned long) (.__uniq.153370809355997480299804515629147722701)
 soinfo::lookup_version_info(VersionTracker const&, unsigned int, char const*, version_info const**)
 BionicSmallObjectAllocator::alloc()
-ConfigParser::next_token(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>*)
+bool plain_relocate_impl<(RelocMode)1>(Relocator&, elf64_rela*, unsigned long) (.__uniq.153370809355997480299804515629147722701)
 
 
 sampling/lmkd.afdo
@@ -369,14 +368,13 @@ meminfo_parse(meminfo*) (.__uniq.220333500789862702810363420933441579510)
 apply_proc_prio(lmk_procprio const&, ucred*) (.__uniq.220333500789862702810363420933441579510)
 snprintf(char*, unsigned long pass_object_size1, char const*, ...) (.__uniq.220333500789862702810363420933441579510)
 snprintf(char*, unsigned long pass_object_size1, char const*, ...) (.__uniq.196807038116046355771133154265472343614)
-mainloop() (.__uniq.220333500789862702810363420933441579510)
 ctrl_data_handler(int, unsigned int, polling_params*) (.__uniq.220333500789862702810363420933441579510)
-read_proc_status(int, char*, unsigned long) (.__uniq.220333500789862702810363420933441579510)
+mainloop() (.__uniq.220333500789862702810363420933441579510)
+call_handler(event_handler_info*, polling_params*, unsigned int) (.__uniq.220333500789862702810363420933441579510)
 Watchdog::start()
-writefilestring(char const*, char const*, bool) (.__uniq.220333500789862702810363420933441579510)
 zoneinfo_parse(zoneinfo*) (.__uniq.220333500789862702810363420933441579510)
-Watchdog::stop()
 reread_file(reread_data*) (.__uniq.220333500789862702810363420933441579510)
+Watchdog::stop()
 stop_wait_for_proc_kill(bool) (.__uniq.220333500789862702810363420933441579510)
 
 
@@ -393,16 +391,16 @@ android::SurfaceFlinger::commit(android::PhysicalDisplayId, android::ftl::SmallM
 android::FlagManager::getInstance()
 android::impl::EventThread::threadMain(std::__1::unique_lock<std::__1::mutex>&)
 android::FlagManager::misc1() const
-android::scheduler::VSyncPredictor::nextAnticipatedVSyncTimeFrom(long, std::__1::optional<long>)
-std::__1::__hash_iterator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, android::sp<android::Layer>>, void*>*> std::__1::__hash_table<std::__1::__hash_value_type<unsigned int, android::sp<android::Layer>>, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, android::sp<android::Layer>>, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, true>, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, android::sp<android::Layer>>, std::__1::equal_to<unsigned int>, std::__1::hash<unsigned int>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned int, android::sp<android::Layer>>>>::find<unsigned int>(unsigned int const&)
 std::__1::pair<std::__1::__tree_iterator<std::__1::__value_type<long, android::frametimeline::TimelineItem>, std::__1::__tree_node<std::__1::__value_type<long, android::frametimeline::TimelineItem>, void*>*, long>, bool> std::__1::__tree<std::__1::__value_type<long, android::frametimeline::TimelineItem>, std::__1::__map_value_compare<long, std::__1::__value_type<long, android::frametimeline::TimelineItem>, std::__1::less<long>, true>, std::__1::allocator<std::__1::__value_type<long, android::frametimeline::TimelineItem>>>::__emplace_unique_key_args<long, std::__1::piecewise_construct_t const&, std::__1::tuple<long const&>, std::__1::tuple<>>(long const&, std::__1::piecewise_construct_t const&, std::__1::tuple<long const&>&&, std::__1::tuple<>&&)
+android::scheduler::VSyncPredictor::nextAnticipatedVSyncTimeFrom(long, std::__1::optional<long>)
 android::FlagManager::enable_small_area_detection() const
-android::RegionSamplingThread::threadMain()
 android::surfaceflinger::frontend::LayerSnapshotBuilder::update(android::surfaceflinger::frontend::LayerSnapshotBuilder::Args const&)
 android::Layer::commitTransaction()
 android::SurfaceFlinger::updateLayerSnapshots(android::VsyncId, long, bool, bool&)::$_1::operator()(android::surfaceflinger::frontend::LayerSnapshot const&) const (.__uniq.59679109406690186319419933358127648880)
 android::scheduler::LayerHistory::summarize(android::scheduler::RefreshRateSelector const&, long)
-android::surfaceflinger::frontend::LayerHierarchy::traverseInZOrder(std::__1::function<bool (android::surfaceflinger::frontend::LayerHierarchy const&, android::surfaceflinger::frontend::LayerHierarchy::TraversalPath const&)> const&, android::surfaceflinger::frontend::LayerHierarchy::TraversalPath&) const
 android::surfaceflinger::frontend::LayerHierarchy::TraversalPath::TraversalPath(android::surfaceflinger::frontend::LayerHierarchy::TraversalPath const&)
+android::surfaceflinger::frontend::LayerHierarchy::traverseInZOrder(std::__1::function<bool (android::surfaceflinger::frontend::LayerHierarchy const&, android::surfaceflinger::frontend::LayerHierarchy::TraversalPath const&)> const&, android::surfaceflinger::frontend::LayerHierarchy::TraversalPath&) const
+android::frametimeline::impl::TokenManager::generateTokenForPredictions(android::frametimeline::TimelineItem&&)
+android::surfaceflinger::frontend::LayerSnapshot::isContentOpaque() const
 
 
