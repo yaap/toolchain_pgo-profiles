@@ -75,6 +75,15 @@ fdo_profile {
 }
 
 fdo_profile {
+    name: "libjpeg",
+    arch: {
+        arm64: {
+            profile: "libjpeg_arm64.afdo",
+        },
+    },
+}
+
+fdo_profile {
     name: "liblog",
     profile: "liblog.afdo",
     native_bridge_supported: true,

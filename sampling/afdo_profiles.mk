@@ -8,6 +8,7 @@ AFDO_PROFILES += keystore2://toolchain/pgo-profiles/sampling:keystore2 \
 	libgui://toolchain/pgo-profiles/sampling:libgui \
 	libhidlbase://toolchain/pgo-profiles/sampling:libhidlbase \
 	libhwui://toolchain/pgo-profiles/sampling:libhwui \
+	libjpeg://toolchain/pgo-profiles/sampling:libjpeg \
 	liblog://toolchain/pgo-profiles/sampling:liblog \
 	libsensorservice://toolchain/pgo-profiles/sampling:libsensorservice \
 	libui://toolchain/pgo-profiles/sampling:libui \

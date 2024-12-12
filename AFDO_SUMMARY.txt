@@ -22,6 +22,26 @@ sampling/keystore2.afdo
 <keystore2::service::KeystoreService as android_system_keystore2::aidl::android::system::keystore2::IKeystoreService::IKeystoreService>::getKeyEntry
 
 
+sampling/lib64_libjpeg.afdo
+====
+decode_mcu(jpeg_decompress_struct*, short (**) [64]) (.__uniq.38586999674409463303572743670542043106)
+encode_mcu_gather(jpeg_compress_struct*, short (**) [64]) (.__uniq.95236183733717820941897797786837410814)
+jpeg_fill_bit_buffer
+jsimd_huff_encode_one_block_neon
+jsimd_extrgbx_ycc_convert_neon
+jsimd_idct_islow_neon
+decode_mcu_AC_refine(jpeg_decompress_struct*, short (**) [64]) (.__uniq.171156272838782586655302252195378734422)
+decompress_onepass(jpeg_decompress_struct*, unsigned char***) (.__uniq.20833755589087077668843286864370132433)
+jsimd_fdct_islow_neon
+jsimd_ycc_extrgbx_convert_neon
+jsimd_quantize_neon
+jsimd_h2v2_fancy_upsample_neon
+jsimd_idct_2x2_neon
+jpeg_huff_decode
+jpeg_gen_optimal_table
+compress_output(jpeg_compress_struct*, unsigned char***) (.__uniq.145562128200378363086066792617467217886)
+
+
 sampling/libart_arm64.afdo
 ====
 art::gc::collector::MarkCompact::MarkingPhase()
