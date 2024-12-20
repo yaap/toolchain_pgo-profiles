@@ -20,4 +20,5 @@ AFDO_PROFILES += keystore2://toolchain/pgo-profiles/sampling:keystore2 \
 	linker://toolchain/pgo-profiles/sampling:linker \
 	libsqlite://toolchain/pgo-profiles/sampling:libsqlite \
 	libcrypto://toolchain/pgo-profiles/sampling:libcrypto \
+	libz://toolchain/pgo-profiles/sampling:libz \
 	server_configurable_flags://toolchain/pgo-profiles/sampling:server_configurable_flags
