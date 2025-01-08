@@ -336,7 +336,7 @@ android::elapsedRealtime()
 android::RefBase::weakref_type::decWeak(void const*)
 
 
-sampling/libz.afdo
+sampling/libz_arm64.afdo
 ====
 inflate_fast
 longest_match(internal_state*, unsigned int) (.__uniq.846982182549687996375565254981381303)

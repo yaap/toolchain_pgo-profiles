@@ -138,8 +138,12 @@ fdo_profile {
 
 fdo_profile {
     name: "libz",
-    profile: "libz.afdo",
     native_bridge_supported: true,
+    arch: {
+        arm64: {
+            profile: "libz_arm64.afdo",
+        },
+    },
 }
 
 fdo_profile {
