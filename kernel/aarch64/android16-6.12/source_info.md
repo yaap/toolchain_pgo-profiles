@@ -1,19 +1,19 @@
 ```
 Kernel branch: android16-6.12
-Kernel version: 6.12.9
-Kernel SHA: b13efbc5c54c54abae1db63f029ac869454c2f44
-Build server ID: 12910303
+Kernel version: 6.12.11
+Kernel SHA: ec8750149193f48119f5cac0331618aa632c54d8
+Build server ID: 12991761
 Test device: Pixel 6
 ```
 
 | Benchmark | Improvement |
 |---|---|
-| Boot time | 2.1% |
-| Cold App launch time | 3.1% |
-| Binder-rpc | 7.8% |
-| Binder-addints | 30.2% |
-| Hwbinder | 17.7% |
-| Bionic (syscall_mmap) | 5.0% |
-| Bionic (pthread) | 2.4% |
-| Bionic (stdio) | 3.0% |
-| Bionic (all) | 1.2% |
+| Boot time | 1.8% |
+| Cold App launch time | 3.2% |
+| Binder-rpc | 6.3% |
+| Binder-addints | 20.4% |
+| Hwbinder | 14.4% |
+| Bionic (syscall_mmap) | 6.4% |
+| Bionic (pthread) | 2.5% |
+| Bionic (stdio) | 3.2% |
+| Bionic (all) | 2.1% |
