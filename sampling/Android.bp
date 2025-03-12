@@ -137,6 +137,16 @@ fdo_profile {
 }
 
 fdo_profile {
+    name: "libz",
+    native_bridge_supported: true,
+    arch: {
+        arm64: {
+            profile: "libz_arm64.afdo",
+        },
+    },
+}
+
+fdo_profile {
     name: "server_configurable_flags",
     profile: "server_configurable_flags.afdo",
 }

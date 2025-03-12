@@ -336,6 +336,26 @@ android::elapsedRealtime()
 android::VectorImpl::editArrayImpl()
 
 
+sampling/libz_arm64.afdo
+====
+longest_match(internal_state*, unsigned int) (.__uniq.846982182549687996375565254981381303)
+deflate_slow(internal_state*, int) (.__uniq.846982182549687996375565254981381303)
+inflate_fast
+build_tree(internal_state*, tree_desc_s*) (.__uniq.177060090991000879816580501745395732528)
+compress_block(internal_state*, ct_data_s const*, ct_data_s const*) (.__uniq.177060090991000879816580501745395732528)
+inflate
+inflate_table
+fill_window(internal_state*) (.__uniq.846982182549687996375565254981381303)
+deflate_fast(internal_state*, int) (.__uniq.846982182549687996375565254981381303)
+adler32_simd_
+_tr_flush_block
+send_tree(internal_state*, ct_data_s*, int) (.__uniq.177060090991000879816580501745395732528)
+armv8_crc32_pmull_little
+init_block(internal_state*) (.__uniq.177060090991000879816580501745395732528)
+adler32_z
+crc32_combine
+
+
 sampling/linker_arm64.afdo
 ====
 elf64_sym const* soinfo_do_lookup_impl<false>(char const*, version_info const*, soinfo**, SymbolLookupList const&) (.__uniq.331521225453620004837736674378903349473)
